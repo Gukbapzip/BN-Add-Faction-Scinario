@@ -137,6 +137,18 @@ local function is_mine(omt)
   return omt.z < 0 and overmapbuffer.check_ot("mine", OtMatchType.PREFIX, omt)
 end
 
+local function is_gas_station(omt)
+  return overmapbuffer.check_ot("s_gas", OtMatchType.TYPE, omt)
+end
+
+local function is_augmentation_clinic(omt)
+  return overmapbuffer.check_ot("afs_augmentation_clinic", OtMatchType.PREFIX, omt)
+end
+
+local function is_microlab(omt)
+  return overmapbuffer.check_ot("microlab_generic", OtMatchType.TYPE, omt)
+end
+
 local function is_subway_station(omt)
   return (omt.z == 0 and overmapbuffer.check_ot("sub_station", OtMatchType.PREFIX, omt))
     or overmapbuffer.check_ot("sewer_sub_station", OtMatchType.PREFIX, omt)
@@ -148,8 +160,27 @@ mod.on_mapgen_postprocess = function(params)
   local omt = params.omt
   if not map or not omt then return end
 
+  if is_gas_station(omt) then
+    clear_monsters(map, omt)
+    return
+  end
+
+  if is_augmentation_clinic(omt) then
+    clear_monsters(map, omt)
+    return
+  end
+
+  if is_microlab(omt) then
+    if gapi.rng(1, 100) <= 35 then
+      clear_monsters(map, omt)
+      spawn_many(map, omt, "nc_mutated_doc", 4)
+    end
+    return
+  end
+
   if is_hospital(omt) then
     if gapi.rng(1, 100) <= 80 then
+      clear_monsters(map, omt)
       spawn_sanitizer_group(map, omt, gapi.rng(2, 4))
     end
     return
@@ -157,6 +188,7 @@ mod.on_mapgen_postprocess = function(params)
 
   if is_mine(omt) then
     if gapi.rng(1, 100) <= 70 then
+      clear_monsters(map, omt)
       spawn_many(map, omt, "nc_cultist", gapi.rng(1, 3))
     end
     return
@@ -164,6 +196,7 @@ mod.on_mapgen_postprocess = function(params)
 
   if is_subway_station(omt) then
     if gapi.rng(1, 100) <= 20 then
+      clear_monsters(map, omt)
       spawn_many(map, omt, "nc_tunnel_rat", gapi.rng(3, 12))
     end
     return

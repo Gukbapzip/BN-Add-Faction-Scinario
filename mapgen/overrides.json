@@ -129,19 +129,6 @@
     }
   },
   {
-    "type": "mapgen",
-    "method": "json",
-    "update_mapgen_id": "nc_spawn_mutated_docs",
-    "object": {
-      "place_npcs": [
-        { "class": "nc_mutated_doc", "x": [ 5, 8 ], "y": [ 6, 9 ] },
-        { "class": "nc_mutated_doc", "x": [ 13, 16 ], "y": [ 13, 16 ] },
-        { "class": "nc_mutated_doc", "x": [ 8, 11 ], "y": [ 11, 14 ] },
-        { "class": "nc_mutated_doc", "x": [ 14, 17 ], "y": [ 5, 8 ] }
-      ]
-    }
-  },
-  {
     "type": "map_extra",
     "id": "mx_nc_bikers",
     "name": "Biker Occupied Gas Station",
@@ -170,13 +157,6 @@
     "generator": { "generator_method": "update_mapgen", "generator_id": "nc_spawn_cyborgs_n3" }
   },
   {
-    "type": "map_extra",
-    "id": "mx_nc_mutated_docs",
-    "name": "Mutated Scientists",
-    "description": "Mutated scientists prowl the microlab.",
-    "generator": { "generator_method": "update_mapgen", "generator_id": "nc_spawn_mutated_docs" }
-  },
-  {
     "type": "overmap_terrain",
     "id": "s_gas",
     "copy-from": "s_gas",
@@ -201,20 +181,13 @@
     "extras": "nc_cyborgs_n3"
   },
   {
-    "type": "overmap_terrain",
-    "id": "microlab_generic",
-    "copy-from": "microlab_generic",
-    "extras": "nc_mutated_docs"
-  },
-  {
     "type": "region_overlay",
     "regions": [ "all" ],
     "map_extras": {
       "nc_bikers": { "chance": 100, "extras": { "mx_nc_bikers": 100 } },
       "nc_cyborgs": { "chance": 100, "extras": { "mx_nc_cyborgs": 100 } },
       "nc_cyborgs_n2": { "chance": 100, "extras": { "mx_nc_cyborgs_n2": 100 } },
-      "nc_cyborgs_n3": { "chance": 100, "extras": { "mx_nc_cyborgs_n3": 100 } },
-      "nc_mutated_docs": { "chance": 35, "extras": { "mx_nc_mutated_docs": 100 } }
+      "nc_cyborgs_n3": { "chance": 100, "extras": { "mx_nc_cyborgs_n3": 100 } }
     }
   }
 ]
