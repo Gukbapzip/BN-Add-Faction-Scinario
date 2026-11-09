@@ -3,7 +3,7 @@
     "type": "MOD_INFO",
     "id": "bn_add_faction_scinarios",
     "name": "BN Add Faction Scinarios",
-    "authors": [ "OpenAI" ],
+    "authors": [ "Gukbapzip" ],
     "description": "Adds faction takeover scenarios to BN locations.",
     "category": "content",
     "lua_api_version": 2,
