@@ -1,0 +1,811 @@
+[
+  {
+    "type": "item_group",
+    "id": "NC_BIKER_worn",
+    "subtype": "collection",
+    "entries": [
+      { "item": "briefs" },
+      { "item": "under_armor" },
+      { "item": "tshirt" },
+      { "item": "jeans" },
+      { "item": "jacket_leather" },
+      { "item": "socks" },
+      { "item": "boots_hiking" },
+      { "item": "gloves_leather" },
+      { "item": "helmet_motor" }
+    ]
+  },
+  {
+    "type": "item_group",
+    "id": "NC_BIKER_weapon",
+    "subtype": "distribution",
+    "entries": [
+      { "item": "glock_19", "prob": 25 },
+      { "item": "hk_mp5", "prob": 25 },
+      { "item": "shotgun_s", "prob": 20 },
+      { "item": "machete", "prob": 20 },
+      { "item": "bat", "prob": 10 }
+    ]
+  },
+  {
+    "type": "item_group",
+    "id": "NC_BIKER_fuel",
+    "subtype": "collection",
+    "entries": [ { "item": "gasoline", "charges": 20000, "container-item": "jerrycan_big" } ]
+  },
+  {
+    "type": "item_group",
+    "id": "NC_BIKER_food",
+    "subtype": "distribution",
+    "entries": [
+      { "item": "can_beans", "prob": 30 },
+      { "item": "chocolate", "prob": 25 },
+      { "item": "mre_beef_box", "prob": 20 },
+      { "item": "sports_drink", "prob": 25 }
+    ]
+  },
+  {
+    "type": "item_group",
+    "id": "NC_BIKER_reads",
+    "subtype": "distribution",
+    "entries": [
+      { "item": "mag_cars", "prob": 35 },
+      { "item": "mag_mechanics", "prob": 35 },
+      { "item": "mag_fieldrepair", "prob": 20 },
+      { "item": "mag_guns", "prob": 10 }
+    ]
+  },
+  {
+    "type": "item_group",
+    "id": "NC_BIKER_tools",
+    "subtype": "distribution",
+    "entries": [
+      { "item": "wrench", "prob": 20 },
+      { "item": "screwdriver", "prob": 20 },
+      { "item": "hammer", "prob": 15 },
+      { "item": "hacksaw", "prob": 15 },
+      { "item": "jack", "prob": 10 },
+      { "item": "oxy_torch", "prob": 5 },
+      { "item": "welder", "prob": 5 },
+      { "item": "duct_tape", "prob": 5 },
+      { "item": "superglue", "prob": 5 }
+    ]
+  },
+  {
+    "type": "item_group",
+    "id": "NC_BIKER_misc",
+    "subtype": "collection",
+    "entries": [
+      { "group": "NC_BIKER_food" },
+      { "group": "NC_BIKER_reads" },
+      { "group": "NC_BIKER_tools" }
+    ]
+  },
+  {
+    "type": "item_group",
+    "id": "NC_CYBORG_weapon",
+    "subtype": "distribution",
+    "entries": [
+      { "item": "null", "prob": 25 },
+      { "item": "hk_mp5", "prob": 20 },
+      { "item": "m4a1", "prob": 25 },
+      { "item": "m14ebr", "prob": 15 },
+      { "item": "rm2000_smg", "prob": 15 }
+    ]
+  },
+  {
+    "type": "item_group",
+    "id": "NC_REBEL_shotgun",
+    "subtype": "distribution",
+    "entries": [ { "item": "mossberg_500", "prob": 100 } ]
+  },
+  {
+    "type": "item_group",
+    "id": "NC_REBEL_heavy",
+    "subtype": "distribution",
+    "entries": [ { "item": "m249", "prob": 100 } ]
+  },
+  {
+    "type": "item_group",
+    "id": "NC_MUTATED_DOC_weapon",
+    "subtype": "distribution",
+    "entries": [
+      { "item": "null", "prob": 55 },
+      { "item": "pipe", "prob": 15 },
+      { "item": "broom", "prob": 15 },
+      { "item": "scalpel", "prob": 10 },
+      { "item": "test_tube", "prob": 3 },
+      { "item": "syringe", "prob": 2 }
+    ]
+  },
+  {
+    "type": "trait_group",
+    "id": "NC_MUTATED_DOC_STRENGTH",
+    "subtype": "distribution",
+    "traits": [
+      { "trait": "STR_UP", "prob": 50 },
+      { "trait": "STR_UP_2", "prob": 35 },
+      { "trait": "STR_UP_3", "prob": 15 }
+    ]
+  },
+  {
+    "type": "trait_group",
+    "id": "NC_MUTATED_DOC_MELEE",
+    "subtype": "distribution",
+    "traits": [
+      { "trait": "CLAWS", "prob": 35 },
+      { "trait": "TALONS", "prob": 25 },
+      { "trait": "FANGS", "prob": 25 },
+      { "trait": "TAIL_STING", "prob": 15 }
+    ]
+  },
+  {
+    "type": "trait_group",
+    "id": "NC_MUTATED_DOC_TOUGHNESS",
+    "subtype": "distribution",
+    "traits": [
+      { "trait": "TOUGH", "prob": 40 },
+      { "trait": "TOUGH2", "prob": 35 },
+      { "trait": "TOUGH3", "prob": 25 }
+    ]
+  },
+  {
+    "type": "trait_group",
+    "id": "NC_MUTATED_DOC_SIZE",
+    "subtype": "distribution",
+    "traits": [
+      { "trait": "LARGE", "prob": 80 },
+      { "trait": "HUGE", "prob": 20 }
+    ]
+  },
+  {
+    "type": "trait_group",
+    "id": "NC_MUTATED_DOC_MUTATIONS",
+    "subtype": "collection",
+    "traits": [
+      { "group": "NC_MUTATED_DOC_STRENGTH", "prob": 100 },
+      { "group": "NC_MUTATED_DOC_MELEE", "prob": 100 },
+      { "group": "NC_MUTATED_DOC_TOUGHNESS", "prob": 100 },
+      { "group": "NC_MUTATED_DOC_SIZE", "prob": 75 },
+      { "trait": "FASTHEALER", "prob": 50 },
+      { "trait": "PAINRESIST", "prob": 50 },
+      { "trait": "THICKSKIN", "prob": 40 },
+      { "trait": "ADRENALINE", "prob": 30 },
+      { "trait": "TERRIFYING", "prob": 25 }
+    ]
+  },
+  {
+    "type": "item_group",
+    "id": "NC_MUTATED_DOC_worn",
+    "subtype": "collection",
+    "entries": [
+      { "item": "briefs" },
+      { "item": "tshirt" },
+      { "item": "coat_lab" },
+      { "item": "pants" },
+      { "item": "socks" },
+      { "item": "dress_shoes" },
+      { "item": "glasses_safety" }
+    ]
+  },
+  {
+    "type": "item_group",
+    "id": "NC_REBEL_WORN",
+    "subtype": "collection",
+    "entries": [
+      { "item": "under_armor" },
+      { "item": "pants_tacticool" },
+      { "item": "jacket_tacticool" },
+      { "item": "socks" },
+      { "item": "boots_combat" },
+      { "item": "gloves_tactical" },
+      {
+        "distribution": [
+          { "item": "tacvest", "prob": 35 },
+          { "item": "ballistic_vest_esapi", "prob": 40 },
+          { "item": "ballistic_vest_heavy", "prob": 25 }
+        ]
+      },
+      {
+        "distribution": [
+          { "item": "tac_helmet", "prob": 50 },
+          { "item": "tac_fullhelmet", "prob": 20 },
+          { "item": "helmet_army", "prob": 30 }
+        ]
+      },
+      {
+        "distribution": [
+          { "item": "mask_bal", "prob": 60 },
+          { "item": "mask_gas", "prob": 20 },
+          { "item": "null", "prob": 20 }
+        ]
+      },
+      {
+        "distribution": [
+          { "item": "chestrig", "prob": 40 },
+          { "item": "legrig", "prob": 30 },
+          { "item": "molle_pack", "prob": 30 }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "item_group",
+    "id": "NC_REBEL_HEAVY_WORN",
+    "subtype": "collection",
+    "entries": [
+      { "item": "under_armor" },
+      { "item": "pants_tacticool" },
+      { "item": "jacket_tacticool" },
+      { "item": "ballistic_vest_heavy" },
+      { "item": "tac_fullhelmet" },
+      { "item": "mask_bal" },
+      { "item": "socks" },
+      { "item": "boots_combat" },
+      { "item": "gloves_tactical" },
+      { "item": "elbow_pads" },
+      { "item": "knee_pads" },
+      { "item": "molle_pack" }
+    ]
+  },
+  {
+    "type": "item_group",
+    "id": "NC_REBEL_SNIPER_WORN",
+    "subtype": "collection",
+    "entries": [
+      { "item": "under_armor" },
+      { "item": "pants_tacticool" },
+      { "item": "jacket_tacticool" },
+      { "item": "tacvest" },
+      { "item": "tac_helmet" },
+      { "item": "mask_bal" },
+      { "item": "socks" },
+      { "item": "boots_combat" },
+      { "item": "gloves_tactical" },
+      { "item": "legrig" },
+      { "item": "goggles_nv" }
+    ]
+  },
+  {
+    "type": "item_group",
+    "id": "NC_REBEL_CARRY",
+    "subtype": "collection",
+    "entries": [
+      { "item": "two_way_radio" },
+      { "item": "1st_aid_deluxe" },
+      { "item": "grenade" },
+      { "item": "holo_sight" },
+      { "item": "rail_laser_sight" },
+      { "item": "shoulder_strap" }
+    ]
+  },
+  {
+    "type": "npc_class",
+    "id": "NC_REBEL",
+    "name": { "str": "Rebel Soldier" },
+    "job_description": "The old chain of command is dead.",
+    "copy-from": "NC_SOLDIER",
+    "common": false,
+    "worn_override": "NC_REBEL_WORN",
+    "carry_override": "NC_REBEL_CARRY",
+    "skills": [
+      { "skill": "rifle", "level": { "constant": 4 } },
+      { "skill": "gun", "level": { "constant": 4 } },
+      { "skill": "melee", "level": { "constant": 4 } },
+      { "skill": "dodge", "level": { "constant": 4 } },
+      { "skill": "firstaid", "level": { "constant": 2 } }
+    ]
+  },
+  {
+    "type": "npc_class",
+    "id": "NC_REBEL_RIFLEMAN",
+    "name": { "str": "Rebel Rifleman" },
+    "job_description": "The base belongs to us now.",
+    "copy-from": "NC_SOLDIER",
+    "common": false,
+    "bonus_str": { "rng": [ 2, 4 ] },
+    "bonus_dex": { "rng": [ 2, 4 ] },
+    "bonus_per": { "rng": [ 2, 5 ] },
+    "worn_override": "NC_REBEL_WORN",
+    "carry_override": "NC_REBEL_CARRY",
+    "weapon_override": "NC_SOLDIER_rifle",
+    "skills": [
+      { "skill": "rifle", "level": { "constant": 6 } },
+      { "skill": "gun", "level": { "constant": 6 } },
+      { "skill": "melee", "level": { "constant": 4 } },
+      { "skill": "dodge", "level": { "constant": 4 } },
+      { "skill": "firstaid", "level": { "constant": 2 } }
+    ]
+  },
+  {
+    "type": "npc_class",
+    "id": "NC_REBEL_SMG",
+    "name": { "str": "Rebel Submachine Gunner" },
+    "job_description": "Keep your head down.",
+    "copy-from": "NC_SOLDIER",
+    "common": false,
+    "bonus_dex": { "rng": [ 4, 7 ] },
+    "bonus_per": { "rng": [ 2, 4 ] },
+    "worn_override": "NC_REBEL_WORN",
+    "carry_override": "NC_REBEL_CARRY",
+    "weapon_override": "NC_SOLDIER_smg",
+    "skills": [
+      { "skill": "smg", "level": { "constant": 6 } },
+      { "skill": "gun", "level": { "constant": 6 } },
+      { "skill": "melee", "level": { "constant": 4 } },
+      { "skill": "dodge", "level": { "constant": 4 } }
+    ]
+  },
+  {
+    "type": "npc_class",
+    "id": "NC_REBEL_SHOTGUNNER",
+    "name": { "str": "Rebel Shotgunner" },
+    "job_description": "Close the gate.",
+    "copy-from": "NC_SOLDIER",
+    "common": false,
+    "bonus_str": { "rng": [ 3, 6 ] },
+    "bonus_dex": { "rng": [ 1, 4 ] },
+    "worn_override": "NC_REBEL_HEAVY_WORN",
+    "carry_override": "NC_REBEL_CARRY",
+    "weapon_override": "NC_REBEL_shotgun",
+    "skills": [
+      { "skill": "shotgun", "level": { "constant": 6 } },
+      { "skill": "gun", "level": { "constant": 4 } },
+      { "skill": "melee", "level": { "constant": 4 } },
+      { "skill": "dodge", "level": { "constant": 4 } }
+    ]
+  },
+  {
+    "type": "npc_class",
+    "id": "NC_REBEL_HEAVY",
+    "name": { "str": "Rebel Heavy Gunner" },
+    "job_description": "Suppressing fire.",
+    "copy-from": "NC_SOLDIER",
+    "common": false,
+    "bonus_str": { "rng": [ 6, 10 ] },
+    "bonus_dex": { "rng": [ 0, 2 ] },
+    "bonus_per": { "rng": [ 1, 3 ] },
+    "worn_override": "NC_REBEL_HEAVY_WORN",
+    "carry_override": "NC_REBEL_CARRY",
+    "weapon_override": "NC_REBEL_heavy",
+    "skills": [
+      { "skill": "rifle", "level": { "constant": 6 } },
+      { "skill": "gun", "level": { "constant": 6 } },
+      { "skill": "launcher", "level": { "constant": 4 } },
+      { "skill": "mechanics", "level": { "constant": 4 } },
+      { "skill": "melee", "level": { "constant": 4 } },
+      { "skill": "dodge", "level": { "constant": 2 } }
+    ]
+  },
+  {
+    "type": "npc_class",
+    "id": "NC_REBEL_SNIPER",
+    "name": { "str": "Rebel Sniper" },
+    "job_description": "Nothing moves on the perimeter without my say.",
+    "copy-from": "NC_SOLDIER",
+    "common": false,
+    "bonus_dex": { "rng": [ 3, 6 ] },
+    "bonus_per": { "rng": [ 6, 10 ] },
+    "worn_override": "NC_REBEL_SNIPER_WORN",
+    "carry_override": "NC_REBEL_CARRY",
+    "weapon_override": "military_standard_sniper_rifles",
+    "skills": [
+      { "skill": "rifle", "level": { "constant": 8 } },
+      { "skill": "gun", "level": { "constant": 6 } },
+      { "skill": "melee", "level": { "constant": 2 } },
+      { "skill": "dodge", "level": { "constant": 4 } }
+    ]
+  },
+  {
+    "type": "npc_class",
+    "id": "NC_REBEL_BOSS",
+    "name": { "str": "Rebel Power Armor Boss" },
+    "job_description": "I own this base now.",
+    "copy-from": "NC_SOLDIER",
+    "common": false,
+    "bonus_str": { "rng": [ 7, 12 ] },
+    "bonus_dex": { "rng": [ 3, 6 ] },
+    "bonus_per": { "rng": [ 4, 8 ] },
+    "worn_override": "pwr_armor",
+    "carry_override": "NC_REBEL_CARRY",
+    "weapon_override": "NC_REBEL_heavy",
+    "skills": [
+      { "skill": "rifle", "level": { "constant": 8 } },
+      { "skill": "gun", "level": { "constant": 8 } },
+      { "skill": "launcher", "level": { "constant": 6 } },
+      { "skill": "melee", "level": { "constant": 6 } },
+      { "skill": "dodge", "level": { "constant": 6 } }
+    ]
+  },
+  {
+    "type": "npc_class",
+    "id": "NC_BIKER",
+    "name": { "str": "Biker" },
+    "job_description": "This gas station belongs to the gang.",
+    "traits": [
+      { "group": "BG_survival_story_CRIMINAL" },
+      { "group": "NPC_starting_traits" },
+      { "group": "Appearance_demographics" }
+    ],
+    "common": false,
+    "bonus_str": { "rng": [ 0, 3 ] },
+    "bonus_dex": { "rng": [ 1, 3 ] },
+    "worn_override": "NC_BIKER_worn",
+    "carry_override": "NC_BIKER_misc",
+    "weapon_override": "NC_BIKER_weapon",
+    "skills": [
+      { "skill": "driving", "level": { "constant": 6 } },
+      { "skill": "mechanics", "level": { "constant": 4 } },
+      { "skill": "gun", "level": { "constant": 4 } },
+      { "skill": "pistol", "level": { "constant": 4 } },
+      { "skill": "shotgun", "level": { "constant": 4 } },
+      { "skill": "melee", "level": { "constant": 2 } },
+      { "skill": "dodge", "level": { "constant": 2 } }
+    ]
+  },
+  {
+    "type": "npc_class",
+    "id": "NC_CYBORG",
+    "name": { "str": "Combat Cyborg" },
+    "job_description": "The clinic's security grid is still active.",
+    "copy-from": "NC_CYBORG",
+    "common": false,
+    "traits": [
+      { "group": "NPC_starting_traits" },
+      { "group": "Appearance_demographics" }
+    ],
+    "bonus_str": { "rng": [ 3, 6 ] },
+    "bonus_dex": { "rng": [ 3, 6 ] },
+    "bonus_per": { "rng": [ 2, 5 ] },
+    "weapon_override": "NC_CYBORG_weapon",
+    "bionics": [
+      { "id": "bio_batteries", "chance": 100 },
+      { "id": "bio_power_storage_mkII", "chance": 100 },
+      { "id": "bio_torsionratchet", "chance": 100 },
+      { "id": "bio_ups", "chance": 100 },
+      { "id": "bio_armor_head", "chance": 100 },
+      { "id": "bio_armor_torso", "chance": 100 },
+      { "id": "bio_armor_arms", "chance": 100 },
+      { "id": "bio_armor_legs", "chance": 100 },
+      { "id": "bio_targeting", "chance": 100 },
+      { "id": "bio_speed", "chance": 100 },
+      { "id": "bio_razors", "chance": 100 },
+      { "id": "bio_uncanny_dodge", "chance": 100 },
+      { "id": "bio_faraday", "chance": 100 },
+      { "id": "bio_shock", "chance": 100 },
+      { "id": "bio_ads", "chance": 100 },
+      { "id": "bio_blade", "chance": 80 },
+      { "id": "bio_claws", "chance": 80 },
+      { "id": "bio_monowire", "chance": 80 },
+      { "id": "bio_shotgun", "chance": 50 },
+      { "id": "bio_laser", "chance": 75 },
+      { "id": "bio_blaster", "chance": 50 },
+      { "id": "bio_cloak", "chance": 50 }
+    ],
+    "skills": [
+      { "skill": "gun", "level": { "constant": 6 } },
+      { "skill": "rifle", "level": { "constant": 6 } },
+      { "skill": "smg", "level": { "constant": 6 } },
+      { "skill": "pistol", "level": { "constant": 4 } },
+      { "skill": "shotgun", "level": { "constant": 4 } },
+      { "skill": "melee", "level": { "constant": 6 } },
+      { "skill": "unarmed", "level": { "constant": 6 } },
+      { "skill": "dodge", "level": { "constant": 6 } }
+    ]
+  },
+  {
+    "type": "npc_class",
+    "id": "NC_MUTATED_DOC",
+    "name": { "str": "Mutated Scientist" },
+    "job_description": "The experiment surpassed its designers.",
+    "traits": [
+      { "group": "BG_survival_story_LAB" },
+      { "group": "NPC_starting_traits" },
+      { "group": "Appearance_demographics" },
+      { "group": "NC_MUTATED_DOC_MUTATIONS", "prob": 100 }
+    ],
+    "common": false,
+    "bonus_str": { "rng": [ 7, 12 ] },
+    "bonus_dex": { "rng": [ 3, 6 ] },
+    "bonus_int": { "rng": [ 1, 4 ] },
+    "bonus_per": { "rng": [ 2, 5 ] },
+    "worn_override": "NC_MUTATED_DOC_worn",
+    "weapon_override": "NC_MUTATED_DOC_weapon",
+    "skills": [
+      { "skill": "firstaid", "level": { "constant": 4 } },
+      { "skill": "unarmed", "level": { "constant": 8 } },
+      { "skill": "melee", "level": { "constant": 6 } },
+      { "skill": "bashing", "level": { "constant": 6 } },
+      { "skill": "dodge", "level": { "constant": 6 } }
+    ]
+  },
+  {
+    "type": "item_group",
+    "id": "NC_SANITIZER_worn",
+    "subtype": "collection",
+    "entries": [ { "item": "hazmat_suit" }, { "item": "mask_gas" } ]
+  },
+  {
+    "type": "item_group",
+    "id": "NC_SANITIZER_weapon",
+    "subtype": "distribution",
+    "entries": [
+      { "item": "flamethrower", "prob": 65 },
+      { "item": "rm451_flamethrower", "prob": 35 }
+    ]
+  },
+  {
+    "type": "item_group",
+    "id": "NC_SANITIZER_heavy_worn",
+    "subtype": "collection",
+    "entries": [ { "item": "anbc_suit" }, { "item": "mask_gas" } ]
+  },
+  {
+    "type": "item_group",
+    "id": "NC_SANITIZER_heavy_weapon",
+    "subtype": "distribution",
+    "entries": [ { "item": "rm451_flamethrower", "prob": 100 } ]
+  },
+  {
+    "type": "item_group",
+    "id": "NC_SANITIZER_fuel",
+    "subtype": "collection",
+    "entries": [ { "item": "pressurized_tank", "count": 2 } ]
+  },
+  {
+    "type": "item_group",
+    "id": "NC_CULTIST_worn",
+    "subtype": "collection",
+    "entries": [
+      { "item": "briefs" },
+      { "item": "pants" },
+      { "item": "hoodie" },
+      { "item": "boots_hiking" }
+    ]
+  },
+  {
+    "type": "item_group",
+    "id": "NC_CULTIST_weapon",
+    "subtype": "distribution",
+    "entries": [
+      { "item": "pipe", "prob": 45 },
+      { "item": "knife_combat", "prob": 25 },
+      { "item": "machete", "prob": 15 },
+      { "item": "screwdriver", "prob": 15 }
+    ]
+  },
+  {
+    "type": "item_group",
+    "id": "NC_CULTIST_LOOT",
+    "subtype": "distribution",
+    "entries": [
+      { "item": "mutagen_chimera", "prob": 18 },
+      { "item": "iv_mutagen_medical", "prob": 10 },
+      { "item": "bio_painkiller", "prob": 15 },
+      { "item": "bio_shock", "prob": 10 },
+      { "item": "bio_razors", "prob": 10 },
+      { "item": "syringe", "prob": 20 },
+      { "item": "scalpel", "prob": 17 }
+    ]
+  },
+  {
+    "type": "trait_group",
+    "id": "NC_CULTIST_MUTATIONS",
+    "subtype": "collection",
+    "traits": [
+      { "trait": "THRESH_CHIMERA", "prob": 100 },
+      { "trait": "CANNIBAL", "prob": 100 },
+      { "trait": "ROBUST", "prob": 35 },
+      { "trait": "PAINRESIST", "prob": 30 },
+      { "trait": "FASTHEALER", "prob": 20 },
+      { "trait": "ADRENALINE", "prob": 25 },
+      { "trait": "CLAWS", "prob": 20 },
+      { "trait": "FANGS", "prob": 15 },
+      { "group": "NC_MUTATED_DOC_STRENGTH", "prob": 25 },
+      { "group": "NC_MUTATED_DOC_TOUGHNESS", "prob": 35 }
+    ]
+  },
+  {
+    "type": "item_group",
+    "id": "NC_TUNNEL_RAT_worn",
+    "subtype": "collection",
+    "entries": [
+      { "item": "briefs" },
+      { "item": "tshirt" },
+      { "item": "pants" },
+      { "item": "hoodie" },
+      { "item": "boots_hiking" }
+    ]
+  },
+  {
+    "type": "item_group",
+    "id": "NC_TUNNEL_RAT_weapon",
+    "subtype": "distribution",
+    "entries": [
+      { "item": "hand_crossbow", "prob": 20 },
+      { "item": "crossbow", "prob": 20 },
+      { "item": "compcrossbow", "prob": 20 },
+      { "item": "knife_combat", "prob": 20 },
+      { "item": "switchblade", "prob": 10 },
+      { "item": "machete", "prob": 10 }
+    ]
+  },
+  {
+    "type": "item_group",
+    "id": "NC_TUNNEL_RAT_LOOT",
+    "subtype": "distribution",
+    "entries": [
+      { "item": "bolt_wood", "prob": 30 },
+      { "item": "rag", "prob": 20 },
+      { "item": "jerky", "prob": 20 },
+      { "item": "scrap", "prob": 15 },
+      { "item": "bone", "prob": 10 },
+      { "item": "matches", "prob": 5 }
+    ]
+  },
+  {
+    "type": "trait_group",
+    "id": "NC_TUNNEL_RAT_MOUSE",
+    "subtype": "collection",
+    "traits": [
+      { "trait": "THRESH_MOUSE", "prob": 100 },
+      { "trait": "NIGHTVISION", "prob": 100 },
+      { "trait": "LIGHTSTEP", "prob": 60 },
+      { "trait": "FLEET", "prob": 50 },
+      { "group": "trait_group_EARS", "prob": 50 },
+      { "group": "trait_group_TAIL", "prob": 50 },
+      { "group": "trait_group_SIZE", "prob": 25 }
+    ]
+  },
+  {
+    "type": "trait_group",
+    "id": "NC_TUNNEL_RAT_SPIDER",
+    "subtype": "collection",
+    "traits": [
+      { "trait": "THRESH_SPIDER", "prob": 100 },
+      { "trait": "NIGHTVISION", "prob": 100 },
+      { "trait": "CLAWS", "prob": 50 },
+      { "trait": "WEB_WALKER", "prob": 35 },
+      { "trait": "LIGHTSTEP", "prob": 35 },
+      { "group": "trait_group_SKIN", "prob": 60 }
+    ]
+  },
+  {
+    "type": "trait_group",
+    "id": "NC_TUNNEL_RAT_TROGLOBITE",
+    "subtype": "collection",
+    "traits": [
+      { "trait": "THRESH_TROGLOBITE", "prob": 100 },
+      { "trait": "NIGHTVISION", "prob": 100 },
+      { "trait": "TROGLO", "prob": 100 },
+      { "trait": "THICKSKIN", "prob": 50 },
+      { "trait": "TOUGH", "prob": 35 },
+      { "group": "trait_group_SIZE", "prob": 25 }
+    ]
+  },
+  {
+    "type": "trait_group",
+    "id": "NC_TUNNEL_RAT_MUTATIONS",
+    "subtype": "distribution",
+    "traits": [
+      { "group": "NC_TUNNEL_RAT_MOUSE", "prob": 1 },
+      { "group": "NC_TUNNEL_RAT_SPIDER", "prob": 1 },
+      { "group": "NC_TUNNEL_RAT_TROGLOBITE", "prob": 1 }
+    ]
+  },
+  {
+    "type": "npc_class",
+    "id": "NC_SANITIZER",
+    "name": { "str": "Sanitizer" },
+    "job_description": "Contamination must be purged.",
+    "copy-from": "NC_SOLDIER",
+    "common": false,
+    "bonus_str": { "rng": [ 4, 7 ] },
+    "bonus_dex": { "rng": [ 4, 7 ] },
+    "bonus_per": { "rng": [ 2, 5 ] },
+    "worn_override": "NC_SANITIZER_worn",
+    "carry_override": "NC_SANITIZER_fuel",
+    "weapon_override": "NC_SANITIZER_weapon",
+    "skills": [
+      { "skill": "gun", "level": { "constant": 6 } },
+      { "skill": "launcher", "level": { "constant": 6 } },
+      { "skill": "melee", "level": { "constant": 4 } },
+      { "skill": "dodge", "level": { "constant": 4 } }
+    ]
+  },
+  {
+    "type": "npc_class",
+    "id": "NC_SANITIZER_HEAVY",
+    "name": { "str": "Heavy Sanitizer" },
+    "job_description": "All contaminated tissue burns the same.",
+    "copy-from": "NC_SANITIZER",
+    "common": false,
+    "bonus_str": { "rng": [ 7, 11 ] },
+    "bonus_dex": { "rng": [ 3, 6 ] },
+    "worn_override": "NC_SANITIZER_heavy_worn",
+    "weapon_override": "NC_SANITIZER_heavy_weapon",
+    "skills": [
+      { "skill": "gun", "level": { "constant": 6 } },
+      { "skill": "launcher", "level": { "constant": 8 } },
+      { "skill": "melee", "level": { "constant": 4 } },
+      { "skill": "dodge", "level": { "constant": 4 } }
+    ]
+  },
+  {
+    "type": "npc_class",
+    "id": "NC_SANITIZER_MARKSMAN",
+    "name": { "str": "Sanitizer Marksman" },
+    "job_description": "I spot the infection before it spreads.",
+    "copy-from": "NC_SANITIZER",
+    "common": false,
+    "bonus_per": { "rng": [ 6, 10 ] },
+    "bonus_dex": { "rng": [ 5, 8 ] },
+    "worn_override": "NC_SANITIZER_heavy_worn",
+    "weapon_override": "NC_SANITIZER_heavy_weapon",
+    "skills": [
+      { "skill": "gun", "level": { "constant": 8 } },
+      { "skill": "launcher", "level": { "constant": 6 } },
+      { "skill": "rifle", "level": { "constant": 6 } },
+      { "skill": "dodge", "level": { "constant": 6 } }
+    ]
+  },
+  {
+    "type": "npc_class",
+    "id": "NC_CULTIST",
+    "name": { "str": "Flesh Cultist" },
+    "job_description": "The flesh is a gift.",
+    "copy-from": "NC_SOLDIER",
+    "common": false,
+    "traits": [
+      { "group": "NPC_starting_traits" },
+      { "group": "Appearance_demographics" },
+      { "group": "NC_CULTIST_MUTATIONS", "prob": 100 }
+    ],
+    "bonus_str": { "rng": [ 3, 6 ] },
+    "bonus_dex": { "rng": [ 2, 4 ] },
+    "bonus_per": { "rng": [ 1, 3 ] },
+    "worn_override": "NC_CULTIST_worn",
+    "carry_override": "NC_CULTIST_LOOT",
+    "weapon_override": "NC_CULTIST_weapon",
+    "bionics": [
+      { "id": "bio_power_storage", "chance": 100 },
+      { "id": "bio_razors", "chance": 40 },
+      { "id": "bio_painkiller", "chance": 30 },
+      { "id": "bio_shock", "chance": 20 },
+      { "id": "bio_torsionratchet", "chance": 30 }
+    ],
+    "skills": [
+      { "skill": "melee", "level": { "constant": 4 } },
+      { "skill": "unarmed", "level": { "constant": 4 } },
+      { "skill": "cutting", "level": { "constant": 2 } },
+      { "skill": "bashing", "level": { "constant": 2 } },
+      { "skill": "dodge", "level": { "constant": 2 } }
+    ]
+  },
+  {
+    "type": "npc_class",
+    "id": "NC_TUNNEL_RAT",
+    "name": { "str": "Sewer Cannibal" },
+    "job_description": "Meat walks down here.",
+    "copy-from": "NC_SOLDIER",
+    "common": false,
+    "bonus_dex": { "rng": [ 2, 5 ] },
+    "bonus_per": { "rng": [ 2, 5 ] },
+    "traits": [
+      { "group": "NPC_starting_traits" },
+      { "group": "Appearance_demographics" },
+      [ "CANNIBAL", 100 ],
+      { "group": "NC_TUNNEL_RAT_MUTATIONS", "prob": 100 }
+    ],
+    "worn_override": "NC_TUNNEL_RAT_worn",
+    "carry_override": "NC_TUNNEL_RAT_LOOT",
+    "weapon_override": "NC_TUNNEL_RAT_weapon",
+    "skills": [
+      { "skill": "archery", "level": { "constant": 4 } },
+      { "skill": "rifle", "level": { "constant": 2 } },
+      { "skill": "melee", "level": { "constant": 2 } },
+      { "skill": "stabbing", "level": { "constant": 2 } },
+      { "skill": "dodge", "level": { "constant": 2 } }
+    ]
+  }
+]

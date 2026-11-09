@@ -1,0 +1,152 @@
+[
+  {
+    "type": "npc",
+    "id": "nc_rebel",
+    "name_suffix": "Rebel",
+    "class": "NC_REBEL",
+    "attitude": 0,
+    "mission": 8,
+    "chat": "TALK_DONE",
+    "faction": "nc_rebels"
+  },
+  {
+    "type": "npc",
+    "id": "nc_rebel_boss",
+    "name_suffix": "Power Armor Boss",
+    "class": "NC_REBEL_BOSS",
+    "attitude": 0,
+    "mission": 8,
+    "chat": "TALK_DONE",
+    "faction": "nc_rebels"
+  },
+  {
+    "type": "npc",
+    "id": "nc_rebel_rifleman",
+    "name_suffix": "Rebel Rifleman",
+    "class": "NC_REBEL_RIFLEMAN",
+    "attitude": 0,
+    "mission": 8,
+    "chat": "TALK_DONE",
+    "faction": "nc_rebels"
+  },
+  {
+    "type": "npc",
+    "id": "nc_rebel_smg",
+    "name_suffix": "Rebel Submachine Gunner",
+    "class": "NC_REBEL_SMG",
+    "attitude": 0,
+    "mission": 8,
+    "chat": "TALK_DONE",
+    "faction": "nc_rebels"
+  },
+  {
+    "type": "npc",
+    "id": "nc_rebel_shotgunner",
+    "name_suffix": "Rebel Shotgunner",
+    "class": "NC_REBEL_SHOTGUNNER",
+    "attitude": 0,
+    "mission": 8,
+    "chat": "TALK_DONE",
+    "faction": "nc_rebels"
+  },
+  {
+    "type": "npc",
+    "id": "nc_rebel_heavy",
+    "name_suffix": "Rebel Heavy Gunner",
+    "class": "NC_REBEL_HEAVY",
+    "attitude": 0,
+    "mission": 8,
+    "chat": "TALK_DONE",
+    "faction": "nc_rebels"
+  },
+  {
+    "type": "npc",
+    "id": "nc_rebel_sniper",
+    "name_suffix": "Rebel Sniper",
+    "class": "NC_REBEL_SNIPER",
+    "attitude": 0,
+    "mission": 8,
+    "chat": "TALK_DONE",
+    "faction": "nc_rebels"
+  },
+  {
+    "type": "npc",
+    "id": "nc_biker",
+    "name_suffix": "Biker",
+    "class": "NC_BIKER",
+    "attitude": 0,
+    "mission": 8,
+    "chat": "TALK_DONE",
+    "faction": "nc_biker_gang"
+  },
+  {
+    "type": "npc",
+    "id": "nc_cyborg",
+    "name_suffix": "Cyborg",
+    "class": "NC_CYBORG",
+    "attitude": 0,
+    "mission": 8,
+    "chat": "TALK_DONE",
+    "faction": "nc_cyborgs"
+  },
+  {
+    "type": "npc",
+    "id": "nc_mutated_doc",
+    "name_suffix": "Mutated Scientist",
+    "class": "NC_MUTATED_DOC",
+    "attitude": 0,
+    "mission": 8,
+    "chat": "TALK_DONE",
+    "faction": "nc_mutated_scientists"
+  },
+  {
+    "type": "npc",
+    "id": "nc_sanitizer",
+    "name_suffix": "Sanitizer",
+    "class": "NC_SANITIZER",
+    "attitude": 0,
+    "mission": 8,
+    "chat": "TALK_DONE",
+    "faction": "nc_sanitizers"
+  },
+  {
+    "type": "npc",
+    "id": "nc_sanitizer_heavy",
+    "name_suffix": "Heavy Sanitizer",
+    "class": "NC_SANITIZER_HEAVY",
+    "attitude": 0,
+    "mission": 8,
+    "chat": "TALK_DONE",
+    "faction": "nc_sanitizers"
+  },
+  {
+    "type": "npc",
+    "id": "nc_sanitizer_marksman",
+    "name_suffix": "Sanitizer Marksman",
+    "class": "NC_SANITIZER_MARKSMAN",
+    "attitude": 0,
+    "mission": 8,
+    "chat": "TALK_DONE",
+    "faction": "nc_sanitizers"
+  },
+  {
+    "type": "npc",
+    "id": "nc_cultist",
+    "name_suffix": "Flesh Cultist",
+    "class": "NC_CULTIST",
+    "attitude": 0,
+    "mission": 8,
+    "chat": "TALK_DONE",
+    "faction": "nc_flesh_cult"
+  },
+  {
+    "type": "npc",
+    "id": "nc_tunnel_rat",
+    "name_suffix": "Sewer Cannibal",
+    "class": "NC_TUNNEL_RAT",
+    "attitude": 1,
+    "mission": 8,
+    "chat": "TALK_DONE",
+    "faction": "nc_tunnel_rats"
+  }
+]

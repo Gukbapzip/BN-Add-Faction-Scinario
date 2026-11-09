@@ -1,0 +1,177 @@
+[
+  {
+    "type": "faction",
+    "id": "nc_rebels",
+    "name": "NC Rebels",
+    "likes_u": -100,
+    "respects_u": -100,
+    "known_by_u": false,
+    "size": 40,
+    "power": 500,
+    "food_supply": 0,
+    "wealth": 0,
+    "relations": {
+      "your_followers": { "kill on sight": true },
+      "nc_rebels": {
+        "kill on sight": false,
+        "watch your back": true,
+        "share my stuff": true,
+        "guard your stuff": true,
+        "lets you in": true,
+        "defends your space": true,
+        "knows your voice": true
+      }
+    },
+    "description": "Mutinous soldiers occupying the military base."
+  },
+  {
+    "type": "faction",
+    "id": "nc_biker_gang",
+    "name": "NC Biker Gang",
+    "likes_u": -100,
+    "respects_u": -100,
+    "known_by_u": false,
+    "size": 10,
+    "power": 100,
+    "food_supply": 0,
+    "wealth": 0,
+    "relations": {
+      "your_followers": { "kill on sight": true },
+      "nc_biker_gang": {
+        "kill on sight": false,
+        "watch your back": true,
+        "share my stuff": true,
+        "guard your stuff": true,
+        "lets you in": true,
+        "defends your space": true,
+        "knows your voice": true
+      }
+    },
+    "description": "A biker gang squatting at the race track."
+  },
+  {
+    "type": "faction",
+    "id": "nc_cyborgs",
+    "name": "NC Cyborgs",
+    "likes_u": -100,
+    "respects_u": -100,
+    "known_by_u": false,
+    "size": 12,
+    "power": 300,
+    "food_supply": 0,
+    "wealth": 0,
+    "relations": {
+      "your_followers": { "kill on sight": true },
+      "nc_cyborgs": {
+        "kill on sight": false,
+        "watch your back": true,
+        "share my stuff": true,
+        "guard your stuff": true,
+        "lets you in": true,
+        "defends your space": true,
+        "knows your voice": true
+      }
+    },
+    "description": "Heavily augmented cyborgs defending the clinic."
+  },
+  {
+    "type": "faction",
+    "id": "nc_mutated_scientists",
+    "name": "NC Mutated Scientists",
+    "likes_u": -100,
+    "respects_u": -100,
+    "known_by_u": false,
+    "size": 18,
+    "power": 400,
+    "food_supply": 0,
+    "wealth": 0,
+    "relations": {
+      "your_followers": { "kill on sight": true },
+      "nc_mutated_scientists": {
+        "kill on sight": false,
+        "watch your back": true,
+        "share my stuff": true,
+        "guard your stuff": true,
+        "lets you in": true,
+        "defends your space": true,
+        "knows your voice": true
+      }
+    },
+    "description": "Mutated researchers inhabiting the microlab."
+  },
+  {
+    "type": "faction",
+    "id": "nc_sanitizers",
+    "name": "NC Sanitizers",
+    "likes_u": -100,
+    "respects_u": -100,
+    "known_by_u": false,
+    "size": 18,
+    "power": 350,
+    "food_supply": 0,
+    "wealth": 0,
+    "relations": {
+      "your_followers": { "kill on sight": true },
+      "nc_sanitizers": {
+        "kill on sight": false,
+        "watch your back": true,
+        "share my stuff": true,
+        "guard your stuff": true,
+        "lets you in": true,
+        "defends your space": true,
+        "knows your voice": true
+      }
+    },
+    "description": "Hazmat-clad cleaners purging hospitals with fire."
+  },
+  {
+    "type": "faction",
+    "id": "nc_flesh_cult",
+    "name": "NC Flesh Cult",
+    "likes_u": -100,
+    "respects_u": -100,
+    "known_by_u": false,
+    "size": 14,
+    "power": 150,
+    "food_supply": 0,
+    "wealth": 0,
+    "relations": {
+      "your_followers": { "kill on sight": true },
+      "nc_flesh_cult": {
+        "kill on sight": false,
+        "watch your back": true,
+        "share my stuff": true,
+        "guard your stuff": true,
+        "lets you in": true,
+        "defends your space": true,
+        "knows your voice": true
+      }
+    },
+    "description": "Mutation-warped cultists dwelling in the mines."
+  },
+  {
+    "type": "faction",
+    "id": "nc_tunnel_rats",
+    "name": "NC Tunnel Rats",
+    "likes_u": -20,
+    "respects_u": -20,
+    "known_by_u": false,
+    "size": 10,
+    "power": 75,
+    "food_supply": 0,
+    "wealth": 0,
+    "relations": {
+      "your_followers": { "kill on sight": false },
+      "nc_tunnel_rats": {
+        "kill on sight": false,
+        "watch your back": true,
+        "share my stuff": true,
+        "guard your stuff": true,
+        "lets you in": true,
+        "defends your space": true,
+        "knows your voice": true
+      }
+    },
+    "description": "Cannibal hunters stalking the sewers and subways."
+  }
+]
