@@ -13,20 +13,6 @@ local SANITIZERS = {
   "nc_sanitizer_marksman",
 }
 
-local FACTION_IDS = {
-  nc_rebels = true,
-  nc_biker_gang = true,
-  nc_cyborgs = true,
-  nc_mutated_scientists = true,
-  nc_sanitizers = true,
-  nc_flesh_cult = true,
-  nc_tunnel_rats = true,
-}
-
-local FACTION_MONSTERS = {
-  mon_mech_recon = true,
-}
-
 local SNIPER_TOWERS = {
   { id = "mil_base_1b1", x = 7, y = 9 },
   { id = "mil_base_4b1", x = 3, y = 3 },
@@ -77,42 +63,6 @@ end
 local function abs_to_bub(omt, p)
   local abs_pos = omt:project_combine(p)
   return gapi.get_map():abs_to_bub(abs_pos)
-end
-
-local function omt_key(omt)
-  return string.format("%d,%d,%d", omt.x, omt.y, omt.z)
-end
-
-local function replacements()
-  local storage = game.mod_storage[game.current_mod]
-  storage.replaced_omts = storage.replaced_omts or {}
-  return storage.replaced_omts
-end
-
-local function mark_replaced(omt)
-  replacements()[omt_key(omt)] = true
-end
-
-local function is_replaced(omt)
-  return replacements()[omt_key(omt)] == true
-end
-
-local function has_faction_npcs(omt)
-  local npcs = gapi.get_npcs_near_omt(omt, 0, false) or {}
-  for _, npc in ipairs(npcs) do
-    if FACTION_IDS[npc:get_faction_id():str()] then return true end
-  end
-  return false
-end
-
-local function remove_replacement_monster(monster)
-  if not monster or monster:is_dead() then return end
-  if FACTION_MONSTERS[monster:get_type():str()] then return end
-
-  local map = gapi.get_map()
-  if not map then return end
-  local omt = map:bub_to_abs(monster:get_pos_ms()):to_omt()
-  if is_replaced(omt) or has_faction_npcs(omt) then monster:erase() end
 end
 
 local function clear_monsters(map, omt)
@@ -212,20 +162,17 @@ mod.on_mapgen_postprocess = function(params)
 
   if is_gas_station(omt) then
     clear_monsters(map, omt)
-    mark_replaced(omt)
     return
   end
 
   if is_augmentation_clinic(omt) then
     clear_monsters(map, omt)
-    mark_replaced(omt)
     return
   end
 
   if is_microlab(omt) then
     if gapi.rng(1, 100) <= 35 then
       clear_monsters(map, omt)
-      mark_replaced(omt)
       spawn_many(map, omt, "nc_mutated_doc", 4)
     end
     return
@@ -234,7 +181,6 @@ mod.on_mapgen_postprocess = function(params)
   if is_hospital(omt) then
     if gapi.rng(1, 100) <= 80 then
       clear_monsters(map, omt)
-      mark_replaced(omt)
       spawn_sanitizer_group(map, omt, gapi.rng(2, 4))
     end
     return
@@ -243,7 +189,6 @@ mod.on_mapgen_postprocess = function(params)
   if is_mine(omt) then
     if gapi.rng(1, 100) <= 70 then
       clear_monsters(map, omt)
-      mark_replaced(omt)
       spawn_many(map, omt, "nc_cultist", gapi.rng(1, 3))
     end
     return
@@ -252,7 +197,6 @@ mod.on_mapgen_postprocess = function(params)
   if is_subway_station(omt) then
     if gapi.rng(1, 100) <= 20 then
       clear_monsters(map, omt)
-      mark_replaced(omt)
       spawn_many(map, omt, "nc_tunnel_rat", gapi.rng(3, 12))
     end
     return
@@ -261,7 +205,6 @@ mod.on_mapgen_postprocess = function(params)
   if not is_military_base(omt) then return end
 
   clear_monsters(map, omt)
-  mark_replaced(omt)
 
   if omt.z == 0 then
     if matches("mil_base_5g", omt) then
@@ -298,12 +241,4 @@ mod.on_mapgen_postprocess = function(params)
       end
     end
   end
-end
-
-mod.on_monster_spawn = function(params)
-  remove_replacement_monster(params.monster)
-end
-
-mod.on_monster_loaded = function(params)
-  remove_replacement_monster(params.monster)
 end
