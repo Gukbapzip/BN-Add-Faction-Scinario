@@ -13,6 +13,20 @@ local SANITIZERS = {
   "nc_sanitizer_marksman",
 }
 
+local FACTION_IDS = {
+  nc_rebels = true,
+  nc_biker_gang = true,
+  nc_cyborgs = true,
+  nc_mutated_scientists = true,
+  nc_sanitizers = true,
+  nc_flesh_cult = true,
+  nc_tunnel_rats = true,
+}
+
+local FACTION_MONSTERS = {
+  mon_mech_recon = true,
+}
+
 local SNIPER_TOWERS = {
   { id = "mil_base_1b1", x = 7, y = 9 },
   { id = "mil_base_4b1", x = 3, y = 3 },
@@ -63,6 +77,41 @@ end
 local function abs_to_bub(omt, p)
   local abs_pos = omt:project_combine(p)
   return gapi.get_map():abs_to_bub(abs_pos)
+end
+
+local function creature_omt(creature)
+  local map = gapi.get_map()
+  if not map or not creature then return nil end
+  return map:bub_to_abs(creature:get_pos_ms()):to_omt()
+end
+
+local function is_faction_npc(npc)
+  return npc and not npc:is_dead() and FACTION_IDS[npc:get_faction_id():str()] == true
+end
+
+local function has_faction_npc_near(omt)
+  local npcs = gapi.get_npcs_near_omt({
+    center = omt,
+    radius = 1,
+    ignore_z = false,
+  }) or {}
+  for _, npc in ipairs(npcs) do
+    if is_faction_npc(npc) then return true end
+  end
+  return false
+end
+
+local function clean_monsters_near(omt)
+  local monsters = gapi.get_monsters_near_omt({
+    center = omt,
+    radius = 1,
+    ignore_z = false,
+  }) or {}
+  for _, monster in ipairs(monsters) do
+    if not monster:is_dead() and not FACTION_MONSTERS[monster:get_type():str()] then
+      monster:erase()
+    end
+  end
 end
 
 local function clear_monsters(map, omt)
@@ -241,4 +290,30 @@ mod.on_mapgen_postprocess = function(params)
       end
     end
   end
+end
+
+mod.on_monster_loaded = function(params)
+  local monster = params.monster
+  if not monster or monster:is_dead() then return end
+  if FACTION_MONSTERS[monster:get_type():str()] then return end
+
+  local omt = creature_omt(monster)
+  if omt and has_faction_npc_near(omt) then monster:erase() end
+end
+
+mod.clean_faction_areas = function()
+  local visited = {}
+  for _, npc in ipairs(gapi.get_all_npcs() or {}) do
+    if is_faction_npc(npc) then
+      local omt = creature_omt(npc)
+      if omt then
+        local key = string.format("%d,%d,%d", omt.x, omt.y, omt.z)
+        if not visited[key] then
+          visited[key] = true
+          clean_monsters_near(omt)
+        end
+      end
+    end
+  end
+  return true
 end

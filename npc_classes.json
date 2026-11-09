@@ -529,6 +529,8 @@
     "type": "item_group",
     "id": "NC_SANITIZER_weapon",
     "subtype": "distribution",
+    "ammo": 100,
+    "magazine": 100,
     "entries": [
       { "item": "flamethrower", "prob": 65 },
       { "item": "rm451_flamethrower", "prob": 35 }
@@ -544,13 +546,18 @@
     "type": "item_group",
     "id": "NC_SANITIZER_heavy_weapon",
     "subtype": "distribution",
+    "ammo": 100,
+    "magazine": 100,
     "entries": [ { "item": "rm451_flamethrower", "prob": 100 } ]
   },
   {
     "type": "item_group",
     "id": "NC_SANITIZER_fuel",
     "subtype": "collection",
-    "entries": [ { "item": "pressurized_tank", "count": 2 } ]
+    "entries": [
+      { "item": "flamethrower_fuel", "charges": 3000, "container-item": "pressurized_tank" },
+      { "item": "flamethrower_fuel", "charges": 2000, "container-item": "rm4502" }
+    ]
   },
   {
     "type": "item_group",
