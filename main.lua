@@ -27,6 +27,8 @@ local FACTION_MONSTERS = {
   mon_mech_recon = true,
 }
 
+local CLEAN_RADIUS_OMT = 1
+
 local SNIPER_TOWERS = {
   { id = "mil_base_1b1", x = 7, y = 9 },
   { id = "mil_base_4b1", x = 3, y = 3 },
@@ -85,6 +87,28 @@ local function creature_omt(creature)
   return map:bub_to_abs(creature:get_pos_ms()):to_omt()
 end
 
+local function omt_key(omt)
+  return string.format("%d,%d,%d", omt.x, omt.y, omt.z)
+end
+
+local function pending_cleanups()
+  local storage = game.mod_storage[game.current_mod]
+  storage.pending_faction_cleanups = storage.pending_faction_cleanups or {}
+  return storage.pending_faction_cleanups
+end
+
+local function queue_cleanup(omt)
+  pending_cleanups()[omt_key(omt)] = { x = omt.x, y = omt.y, z = omt.z }
+end
+
+local function is_pending_cleanup_area(omt)
+  for _, center in pairs(pending_cleanups()) do
+    local distance = math.max(math.abs(omt.x - center.x), math.abs(omt.y - center.y))
+    if omt.z == center.z and distance <= CLEAN_RADIUS_OMT then return true end
+  end
+  return false
+end
+
 local function is_faction_npc(npc)
   return npc and not npc:is_dead() and FACTION_IDS[npc:get_faction_id():str()] == true
 end
@@ -92,7 +116,7 @@ end
 local function has_faction_npc_near(omt)
   local npcs = gapi.get_npcs_near_omt({
     center = omt,
-    radius = 1,
+    radius = CLEAN_RADIUS_OMT,
     ignore_z = false,
   }) or {}
   for _, npc in ipairs(npcs) do
@@ -104,7 +128,7 @@ end
 local function clean_monsters_near(omt)
   local monsters = gapi.get_monsters_near_omt({
     center = omt,
-    radius = 1,
+    radius = CLEAN_RADIUS_OMT,
     ignore_z = false,
   }) or {}
   for _, monster in ipairs(monsters) do
@@ -112,6 +136,10 @@ local function clean_monsters_near(omt)
       monster:erase()
     end
   end
+end
+
+local function queue_if_faction_present(omt)
+  if has_faction_npc_near(omt) then queue_cleanup(omt) end
 end
 
 local function clear_monsters(map, omt)
@@ -211,11 +239,13 @@ mod.on_mapgen_postprocess = function(params)
 
   if is_gas_station(omt) then
     clear_monsters(map, omt)
+    queue_cleanup(omt)
     return
   end
 
   if is_augmentation_clinic(omt) then
     clear_monsters(map, omt)
+    queue_cleanup(omt)
     return
   end
 
@@ -223,6 +253,7 @@ mod.on_mapgen_postprocess = function(params)
     if gapi.rng(1, 100) <= 35 then
       clear_monsters(map, omt)
       spawn_many(map, omt, "nc_mutated_doc", 4)
+      queue_if_faction_present(omt)
     end
     return
   end
@@ -231,6 +262,7 @@ mod.on_mapgen_postprocess = function(params)
     if gapi.rng(1, 100) <= 80 then
       clear_monsters(map, omt)
       spawn_sanitizer_group(map, omt, gapi.rng(2, 4))
+      queue_if_faction_present(omt)
     end
     return
   end
@@ -239,6 +271,7 @@ mod.on_mapgen_postprocess = function(params)
     if gapi.rng(1, 100) <= 70 then
       clear_monsters(map, omt)
       spawn_many(map, omt, "nc_cultist", gapi.rng(1, 3))
+      queue_if_faction_present(omt)
     end
     return
   end
@@ -247,6 +280,7 @@ mod.on_mapgen_postprocess = function(params)
     if gapi.rng(1, 100) <= 20 then
       clear_monsters(map, omt)
       spawn_many(map, omt, "nc_tunnel_rat", gapi.rng(3, 12))
+      queue_if_faction_present(omt)
     end
     return
   end
@@ -290,6 +324,22 @@ mod.on_mapgen_postprocess = function(params)
       end
     end
   end
+
+  queue_if_faction_present(omt)
+end
+
+local function queue_npc_cleanup(npc)
+  if not is_faction_npc(npc) then return end
+  local omt = creature_omt(npc)
+  if omt then queue_cleanup(omt) end
+end
+
+mod.on_npc_spawn = function(params)
+  queue_npc_cleanup(params.npc)
+end
+
+mod.on_npc_loaded = function(params)
+  queue_npc_cleanup(params.npc)
 end
 
 mod.on_monster_loaded = function(params)
@@ -298,22 +348,15 @@ mod.on_monster_loaded = function(params)
   if FACTION_MONSTERS[monster:get_type():str()] then return end
 
   local omt = creature_omt(monster)
-  if omt and has_faction_npc_near(omt) then monster:erase() end
+  if omt and is_pending_cleanup_area(omt) then monster:erase() end
 end
 
-mod.clean_faction_areas = function()
-  local visited = {}
-  for _, npc in ipairs(gapi.get_all_npcs() or {}) do
-    if is_faction_npc(npc) then
-      local omt = creature_omt(npc)
-      if omt then
-        local key = string.format("%d,%d,%d", omt.x, omt.y, omt.z)
-        if not visited[key] then
-          visited[key] = true
-          clean_monsters_near(omt)
-        end
-      end
-    end
+mod.process_pending_cleanups = function()
+  local pending = pending_cleanups()
+  for key, center in pairs(pending) do
+    local omt = TripointAbsOmt.new(center.x, center.y, center.z)
+    clean_monsters_near(omt)
+    pending[key] = nil
   end
   return true
 end
