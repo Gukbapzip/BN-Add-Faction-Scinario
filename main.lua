@@ -101,14 +101,26 @@ local function omt_key(omt)
   return string.format("%d,%d,%d", omt.x, omt.y, omt.z)
 end
 
-local function pending_cleanups()
+local fallback_storage = {}
+
+local function mod_storage()
+  if not game.mod_storage or not game.current_mod then return fallback_storage end
   local storage = game.mod_storage[game.current_mod]
+  if not storage then
+    storage = fallback_storage
+    game.mod_storage[game.current_mod] = storage
+  end
+  return storage
+end
+
+local function pending_cleanups()
+  local storage = mod_storage()
   storage.pending_faction_cleanups = storage.pending_faction_cleanups or {}
   return storage.pending_faction_cleanups
 end
 
 local function completed_cleanups()
-  local storage = game.mod_storage[game.current_mod]
+  local storage = mod_storage()
   storage.completed_faction_cleanups = storage.completed_faction_cleanups or {}
   return storage.completed_faction_cleanups
 end
