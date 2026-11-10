@@ -14,7 +14,7 @@ Generated areas are not retroactively changed in existing saves.
 
 | Faction | Map tags | Spawn rate |
 | --- | --- | --- |
-| Rebels | `mil_base_*`, excluding `mil_base_minefield_*` | 90% per tile; successful tiles have militia plus fixed boss, mech, and seven tower snipers |
+| Rebels | Military-base building interiors; parking, roads, fields, helipad, and minefields excluded | 90% per interior tile; mech is in the motor pool and seven snipers occupy exterior watchtowers |
 | Bikers | `s_gas_*`, `s_gas_1_*`, `s_gas_rural_*` at z0 | 50% per tile, 3-5 NPCs |
 | Cyborgs | `afs_augmentation_clinic_*` | 80% per tile; 4 on n1, 4 on n2, 2 on n3 |
 | Mutated Scientists | `microlab_*` below z0 | 85% per tile, 4 NPCs |

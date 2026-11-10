@@ -71,10 +71,6 @@ local MILITIA_ZONES = {
   { id = "mil_base_5i", count = 1 },
   { id = "mil_base_6i", count = 1 },
   { id = "mil_base_8i", count = 1 },
-  { id = "mil_base_7i", count = 1 },
-  { id = "mil_base_5a", count = 1 },
-  { id = "mil_base_6a", count = 1 },
-  { id = "mil_base_7a", count = 1 },
 }
 
 local function is_military_base(omt)
@@ -84,6 +80,27 @@ end
 
 local function matches(id, omt)
   return overmapbuffer.check_ot(id, OtMatchType.CONTAINS, omt)
+end
+
+local function is_militia_zone(omt)
+  for _, zone in ipairs(MILITIA_ZONES) do
+    if matches(zone.id, omt) then return true, zone.count end
+  end
+  return false, 0
+end
+
+local function is_rebel_spawn_tile(omt)
+  if omt.z == 0 then
+    local in_zone = is_militia_zone(omt)
+    return in_zone
+      or matches("mil_base_5g", omt)
+      or matches("mil_base_7e", omt)
+  elseif omt.z == 1 then
+    for _, tower in ipairs(SNIPER_TOWERS) do
+      if matches(tower.id, omt) then return true end
+    end
+  end
+  return false
 end
 
 local function abs_to_bub(omt, p)
@@ -321,7 +338,7 @@ mod.on_mapgen_postprocess = function(params)
     return
   end
 
-  if not is_military_base(omt) then return end
+  if not is_military_base(omt) or not is_rebel_spawn_tile(omt) then return end
   if gapi.rng(1, 100) > SPAWN_RATES.military then return end
 
   clear_monsters(map, omt)
@@ -331,7 +348,7 @@ mod.on_mapgen_postprocess = function(params)
       spawn_npc(map, omt, 12, 12, "nc_rebel_boss", 6)
       spawn_random_militia(map, omt, 8, 8)
       spawn_random_militia(map, omt, 16, 16)
-    elseif matches("mil_base_6f", omt) then
+    elseif matches("mil_base_7e", omt) then
       local p = find_free_tile(map, omt, 12, 12, 8)
       if p then
         local mech = gapi.place_monster_at(
@@ -342,17 +359,15 @@ mod.on_mapgen_postprocess = function(params)
       end
       spawn_npc(map, omt, 8, 8, "nc_rebel_heavy", 5)
     else
-      local count = 1
       for _, zone in ipairs(MILITIA_ZONES) do
         if matches(zone.id, omt) then
-          count = zone.count
+          local positions = { { 8, 8 }, { 16, 8 }, { 8, 16 }, { 16, 16 } }
+          for i = 1, zone.count do
+            local p = positions[i]
+            spawn_random_militia(map, omt, p[1], p[2])
+          end
           break
         end
-      end
-      local positions = { { 8, 8 }, { 16, 8 }, { 8, 16 }, { 16, 16 } }
-      for i = 1, count do
-        local p = positions[i]
-        spawn_random_militia(map, omt, p[1], p[2])
       end
     end
   elseif omt.z == 1 then
