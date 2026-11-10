@@ -28,6 +28,7 @@ local FACTION_MONSTERS = {
 }
 
 local CLEAN_RADIUS_OMT = 1
+local SPARE_MAGAZINES = 3
 
 local SNIPER_TOWERS = {
   { id = "mil_base_1b1", x = 7, y = 9 },
@@ -336,18 +337,53 @@ mod.on_mapgen_postprocess = function(params)
   queue_if_faction_present(omt)
 end
 
-local function queue_npc_cleanup(npc)
+local function ensure_gun_magazines(npc)
+  for _, weapon in ipairs(npc:wielded_items() or {}) do
+    if weapon:is_gun() then
+      local current = weapon:current_magazine()
+      if current then
+        local magazine_type = current:get_type()
+        local magazine_data = magazine_type:obj().slot_magazine
+        if magazine_data and magazine_data.default_ammo:str() ~= "null" then
+          local ammo_type = magazine_data.default_ammo
+          current:ammo_set(ammo_type, current:ammo_capacity())
+
+          local existing = npc:get_items_if({ type = magazine_type }) or {}
+          for _, magazine in ipairs(existing) do
+            magazine:ammo_set(ammo_type, magazine:ammo_capacity())
+          end
+          for _ = #existing + 1, SPARE_MAGAZINES do
+            local magazine = gapi.create_item(magazine_type, -1)
+            magazine:ammo_set(ammo_type, magazine:ammo_capacity())
+            npc:add_item(magazine)
+          end
+        end
+      else
+        local ammo_type = weapon:ammo_current()
+        if ammo_type and ammo_type:str() ~= "null" then
+          local capacity = weapon:ammo_capacity()
+          weapon:ammo_set(ammo_type, capacity)
+          if capacity > 0 then npc:create_item(ammo_type, capacity * SPARE_MAGAZINES) end
+        end
+      end
+      return
+    end
+  end
+end
+
+local function prepare_faction_npc(npc)
   if not is_faction_npc(npc) then return end
+  ensure_gun_magazines(npc)
   local omt = creature_omt(npc)
   if omt then queue_cleanup(omt) end
 end
 
 mod.on_npc_spawn = function(params)
-  queue_npc_cleanup(params.npc)
+  prepare_faction_npc(params.npc)
 end
 
 mod.on_npc_loaded = function(params)
-  queue_npc_cleanup(params.npc)
+  prepare_faction_npc(params.npc)
 end
 
 mod.on_monster_loaded = function(params)

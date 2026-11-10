@@ -19,6 +19,8 @@
     "type": "item_group",
     "id": "NC_BIKER_weapon",
     "subtype": "distribution",
+    "ammo": 100,
+    "magazine": 100,
     "entries": [
       { "item": "glock_19", "prob": 25 },
       { "item": "hk_mp5", "prob": 25 },
@@ -85,6 +87,8 @@
     "type": "item_group",
     "id": "NC_CYBORG_weapon",
     "subtype": "distribution",
+    "ammo": 100,
+    "magazine": 100,
     "entries": [
       { "item": "null", "prob": 25 },
       { "item": "hk_mp5", "prob": 20 },
@@ -95,14 +99,49 @@
   },
   {
     "type": "item_group",
+    "id": "NC_REBEL_rifle",
+    "subtype": "distribution",
+    "ammo": 100,
+    "magazine": 100,
+    "entries": [
+      { "item": "m4a1", "prob": 90 },
+      { "item": "m14ebr", "prob": 10 }
+    ]
+  },
+  {
+    "type": "item_group",
+    "id": "NC_REBEL_smg",
+    "subtype": "distribution",
+    "ammo": 100,
+    "magazine": 100,
+    "entries": [ { "item": "hk_mp5", "prob": 100 } ]
+  },
+  {
+    "type": "item_group",
+    "id": "NC_REBEL_sniper_weapon",
+    "subtype": "distribution",
+    "ammo": 100,
+    "magazine": 100,
+    "entries": [
+      { "item": "m110a1", "prob": 75 },
+      { "item": "m2010", "prob": 20 },
+      { "item": "m107a1", "prob": 5 }
+    ]
+  },
+  {
+    "type": "item_group",
     "id": "NC_REBEL_shotgun",
     "subtype": "distribution",
+    "ammo": 100,
+    "magazine": 100,
     "entries": [ { "item": "mossberg_500", "prob": 100 } ]
   },
   {
     "type": "item_group",
     "id": "NC_REBEL_heavy",
     "subtype": "distribution",
+    "ammo": 100,
+    "magazine": 100,
     "entries": [ { "item": "m249", "prob": 100 } ]
   },
   {
@@ -308,7 +347,7 @@
     "bonus_per": { "rng": [ 2, 5 ] },
     "worn_override": "NC_REBEL_WORN",
     "carry_override": "NC_REBEL_CARRY",
-    "weapon_override": "NC_SOLDIER_rifle",
+    "weapon_override": "NC_REBEL_rifle",
     "skills": [
       { "skill": "rifle", "level": { "constant": 6 } },
       { "skill": "gun", "level": { "constant": 6 } },
@@ -328,7 +367,7 @@
     "bonus_per": { "rng": [ 2, 4 ] },
     "worn_override": "NC_REBEL_WORN",
     "carry_override": "NC_REBEL_CARRY",
-    "weapon_override": "NC_SOLDIER_smg",
+    "weapon_override": "NC_REBEL_smg",
     "skills": [
       { "skill": "smg", "level": { "constant": 6 } },
       { "skill": "gun", "level": { "constant": 6 } },
@@ -388,7 +427,7 @@
     "bonus_per": { "rng": [ 6, 10 ] },
     "worn_override": "NC_REBEL_SNIPER_WORN",
     "carry_override": "NC_REBEL_CARRY",
-    "weapon_override": "military_standard_sniper_rifles",
+    "weapon_override": "NC_REBEL_sniper_weapon",
     "skills": [
       { "skill": "rifle", "level": { "constant": 8 } },
       { "skill": "gun", "level": { "constant": 6 } },
@@ -628,6 +667,8 @@
     "type": "item_group",
     "id": "NC_TUNNEL_RAT_weapon",
     "subtype": "distribution",
+    "ammo": 100,
+    "magazine": 100,
     "entries": [
       { "item": "hand_crossbow", "prob": 20 },
       { "item": "crossbow", "prob": 20 },
