@@ -92,69 +92,11 @@
     }
   },
   {
-    "type": "mapgen",
-    "method": "json",
-    "update_mapgen_id": "nc_spawn_cyborgs",
-    "object": {
-      "place_npcs": [
-        { "class": "nc_cyborg", "x": [ 6, 8 ], "y": [ 8, 10 ] },
-        { "class": "nc_cyborg", "x": [ 12, 14 ], "y": [ 8, 10 ] },
-        { "class": "nc_cyborg", "x": [ 9, 11 ], "y": [ 13, 15 ] },
-        { "class": "nc_cyborg", "x": [ 10, 12 ], "y": [ 17, 19 ] }
-      ]
-    }
-  },
-  {
-    "type": "mapgen",
-    "method": "json",
-    "update_mapgen_id": "nc_spawn_cyborgs_n2",
-    "object": {
-      "place_npcs": [
-        { "class": "nc_cyborg", "x": [ 8, 9 ], "y": [ 8, 9 ] },
-        { "class": "nc_cyborg", "x": [ 12, 13 ], "y": [ 8, 9 ] },
-        { "class": "nc_cyborg", "x": [ 7, 8 ], "y": 16 },
-        { "class": "nc_cyborg", "x": [ 14, 15 ], "y": 16 }
-      ]
-    }
-  },
-  {
-    "type": "mapgen",
-    "method": "json",
-    "update_mapgen_id": "nc_spawn_cyborgs_n3",
-    "object": {
-      "place_npcs": [
-        { "class": "nc_cyborg", "x": 6, "y": 6 },
-        { "class": "nc_cyborg", "x": 17, "y": 6 }
-      ]
-    }
-  },
-  {
     "type": "map_extra",
     "id": "mx_nc_bikers",
     "name": "Biker Occupied Gas Station",
     "description": "A biker gang controls the gas station.",
     "generator": { "generator_method": "update_mapgen", "generator_id": "nc_spawn_bikers" }
-  },
-  {
-    "type": "map_extra",
-    "id": "mx_nc_cyborgs",
-    "name": "Cyborg Occupied Augment Clinic",
-    "description": "Hostile cyborgs guard the clinic.",
-    "generator": { "generator_method": "update_mapgen", "generator_id": "nc_spawn_cyborgs" }
-  },
-  {
-    "type": "map_extra",
-    "id": "mx_nc_cyborgs_n2",
-    "name": "Cyborg Clinic Patrol",
-    "description": "Hostile cyborgs guard the clinic.",
-    "generator": { "generator_method": "update_mapgen", "generator_id": "nc_spawn_cyborgs_n2" }
-  },
-  {
-    "type": "map_extra",
-    "id": "mx_nc_cyborgs_n3",
-    "name": "Cyborg Clinic Guard Post",
-    "description": "Hostile cyborgs guard the clinic.",
-    "generator": { "generator_method": "update_mapgen", "generator_id": "nc_spawn_cyborgs_n3" }
   },
   {
     "type": "overmap_terrain",
@@ -164,30 +106,21 @@
   },
   {
     "type": "overmap_terrain",
-    "id": "afs_augmentation_clinic_n1",
-    "copy-from": "afs_augmentation_clinic_n1",
-    "extras": "nc_cyborgs"
+    "id": "s_gas_1",
+    "copy-from": "s_gas_1",
+    "extras": "nc_bikers"
   },
   {
     "type": "overmap_terrain",
-    "id": "afs_augmentation_clinic_n2",
-    "copy-from": "afs_augmentation_clinic_n2",
-    "extras": "nc_cyborgs_n2"
-  },
-  {
-    "type": "overmap_terrain",
-    "id": "afs_augmentation_clinic_n3",
-    "copy-from": "afs_augmentation_clinic_n3",
-    "extras": "nc_cyborgs_n3"
+    "id": "s_gas_rural",
+    "copy-from": "s_gas_rural",
+    "extras": "nc_bikers"
   },
   {
     "type": "region_overlay",
     "regions": [ "all" ],
     "map_extras": {
-      "nc_bikers": { "chance": 100, "extras": { "mx_nc_bikers": 100 } },
-      "nc_cyborgs": { "chance": 100, "extras": { "mx_nc_cyborgs": 100 } },
-      "nc_cyborgs_n2": { "chance": 100, "extras": { "mx_nc_cyborgs_n2": 100 } },
-      "nc_cyborgs_n3": { "chance": 100, "extras": { "mx_nc_cyborgs_n3": 100 } }
+      "nc_bikers": { "chance": 100, "extras": { "mx_nc_bikers": 100 } }
     }
   }
 ]

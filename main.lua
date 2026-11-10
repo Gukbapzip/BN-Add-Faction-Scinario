@@ -224,7 +224,7 @@ local function is_mine(omt)
 end
 
 local function is_gas_station(omt)
-  return overmapbuffer.check_ot("s_gas", OtMatchType.TYPE, omt)
+  return omt.z == 0 and overmapbuffer.check_ot("s_gas", OtMatchType.PREFIX, omt)
 end
 
 local function is_augmentation_clinic(omt)
@@ -232,7 +232,7 @@ local function is_augmentation_clinic(omt)
 end
 
 local function is_microlab(omt)
-  return overmapbuffer.check_ot("microlab_generic", OtMatchType.TYPE, omt)
+  return omt.z < 0 and overmapbuffer.check_ot("microlab", OtMatchType.PREFIX, omt)
 end
 
 local function is_subway_station(omt)
@@ -254,6 +254,13 @@ mod.on_mapgen_postprocess = function(params)
 
   if is_augmentation_clinic(omt) then
     clear_monsters(map, omt)
+    local count = 4
+    if omt.z == 2 then
+      count = 2
+    elseif omt.z > 2 then
+      count = 0
+    end
+    spawn_many(map, omt, "nc_cyborg", count)
     queue_cleanup(omt)
     return
   end
@@ -314,15 +321,17 @@ mod.on_mapgen_postprocess = function(params)
       end
       spawn_npc(map, omt, 8, 8, "nc_rebel_heavy", 5)
     else
+      local count = 1
       for _, zone in ipairs(MILITIA_ZONES) do
         if matches(zone.id, omt) then
-          local positions = { { 8, 8 }, { 16, 8 }, { 8, 16 }, { 16, 16 } }
-          for i = 1, zone.count do
-            local p = positions[i]
-            spawn_random_militia(map, omt, p[1], p[2])
-          end
+          count = zone.count
           break
         end
+      end
+      local positions = { { 8, 8 }, { 16, 8 }, { 8, 16 }, { 16, 16 } }
+      for i = 1, count do
+        local p = positions[i]
+        spawn_random_militia(map, omt, p[1], p[2])
       end
     end
   elseif omt.z == 1 then
