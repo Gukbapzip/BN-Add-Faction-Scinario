@@ -388,7 +388,7 @@ local function ensure_gun_magazines(npc)
       local current = weapon:current_magazine()
       if current then
         local magazine_type = current:get_type()
-        local magazine_data = magazine_type:obj().slot_magazine
+        local magazine_data = magazine_type:obj():slot_magazine()
         if magazine_data and magazine_data.default_ammo:str() ~= "null" then
           local ammo_type = magazine_data.default_ammo
           current:ammo_set(ammo_type, current:ammo_capacity())
