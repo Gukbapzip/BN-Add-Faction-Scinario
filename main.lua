@@ -97,8 +97,16 @@ local function pending_cleanups()
   return storage.pending_faction_cleanups
 end
 
+local function completed_cleanups()
+  local storage = game.mod_storage[game.current_mod]
+  storage.completed_faction_cleanups = storage.completed_faction_cleanups or {}
+  return storage.completed_faction_cleanups
+end
+
 local function queue_cleanup(omt)
-  pending_cleanups()[omt_key(omt)] = { x = omt.x, y = omt.y, z = omt.z }
+  local key = omt_key(omt)
+  if completed_cleanups()[key] then return end
+  pending_cleanups()[key] = { x = omt.x, y = omt.y, z = omt.z }
 end
 
 local function is_pending_cleanup_area(omt)
@@ -353,10 +361,12 @@ end
 
 mod.process_pending_cleanups = function()
   local pending = pending_cleanups()
+  local completed = completed_cleanups()
   for key, center in pairs(pending) do
     local omt = TripointAbsOmt.new(center.x, center.y, center.z)
     clean_monsters_near(omt)
     pending[key] = nil
+    completed[key] = true
   end
   return true
 end
