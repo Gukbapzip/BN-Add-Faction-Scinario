@@ -30,6 +30,15 @@ local FACTION_MONSTERS = {
 local CLEAN_RADIUS_OMT = 1
 local SPARE_MAGAZINES = 3
 
+local SPAWN_RATES = {
+  military = 90,
+  microlab = 85,
+  augmentation_clinic = 80,
+  mine = 70,
+  hospital = 60,
+  subway_station = 25,
+}
+
 local SNIPER_TOWERS = {
   { id = "mil_base_1b1", x = 7, y = 9 },
   { id = "mil_base_4b1", x = 3, y = 3 },
@@ -247,18 +256,17 @@ mod.on_mapgen_postprocess = function(params)
   if not map or not omt then return end
 
   if is_gas_station(omt) then
-    clear_monsters(map, omt)
-    queue_cleanup(omt)
+    queue_if_faction_present(omt)
     return
   end
 
   if is_augmentation_clinic(omt) then
+    if omt.z > 2 then return end
+    if gapi.rng(1, 100) > SPAWN_RATES.augmentation_clinic then return end
     clear_monsters(map, omt)
     local count = 4
     if omt.z == 2 then
       count = 2
-    elseif omt.z > 2 then
-      count = 0
     end
     spawn_many(map, omt, "nc_cyborg", count)
     queue_cleanup(omt)
@@ -266,7 +274,7 @@ mod.on_mapgen_postprocess = function(params)
   end
 
   if is_microlab(omt) then
-    if gapi.rng(1, 100) <= 35 then
+    if gapi.rng(1, 100) <= SPAWN_RATES.microlab then
       clear_monsters(map, omt)
       spawn_many(map, omt, "nc_mutated_doc", 4)
       queue_if_faction_present(omt)
@@ -275,7 +283,7 @@ mod.on_mapgen_postprocess = function(params)
   end
 
   if is_hospital(omt) then
-    if gapi.rng(1, 100) <= 80 then
+    if gapi.rng(1, 100) <= SPAWN_RATES.hospital then
       clear_monsters(map, omt)
       spawn_sanitizer_group(map, omt, gapi.rng(2, 4))
       queue_if_faction_present(omt)
@@ -284,7 +292,7 @@ mod.on_mapgen_postprocess = function(params)
   end
 
   if is_mine(omt) then
-    if gapi.rng(1, 100) <= 70 then
+    if gapi.rng(1, 100) <= SPAWN_RATES.mine then
       clear_monsters(map, omt)
       spawn_many(map, omt, "nc_cultist", gapi.rng(1, 3))
       queue_if_faction_present(omt)
@@ -293,7 +301,7 @@ mod.on_mapgen_postprocess = function(params)
   end
 
   if is_subway_station(omt) then
-    if gapi.rng(1, 100) <= 20 then
+    if gapi.rng(1, 100) <= SPAWN_RATES.subway_station then
       clear_monsters(map, omt)
       spawn_many(map, omt, "nc_tunnel_rat", gapi.rng(3, 12))
       queue_if_faction_present(omt)
@@ -302,6 +310,7 @@ mod.on_mapgen_postprocess = function(params)
   end
 
   if not is_military_base(omt) then return end
+  if gapi.rng(1, 100) > SPAWN_RATES.military then return end
 
   clear_monsters(map, omt)
 
